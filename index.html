@@ -255,7 +255,7 @@ crossorigin="anonymous"></script>
 						let bothCorrect = parseInt($playAreaCurGuess.find('.bothCorrect').val());
 						let colorCorrect = parseInt($playAreaCurGuess.find('.colorCorrect').val());
 						if (bothCorrect + colorCorrect > globalGameState.numPegs) {
-							$curGuessAlert.text("The sum of Right-Color-and-Column and Right-color-wrong-column should be less than the number of pegs.");
+							$curGuessAlert.text("The sum of Right-Arrow-and-Column and Right-Arrow-wrong-column should be less than the number of 4.");
 							$curGuessAlert.show();
 							return;
 						}
@@ -286,7 +286,7 @@ crossorigin="anonymous"></script>
 					var guess = generateNextGuess(globalGameState, evidence);
 					if (guess == null) {
 						$playAreaCurGuess.hide();
-						$curGuessAlert.html("Ran out of possible guesses. There might be a contradiction in the information you entered above. If you think this is a bug, please file a report at <a href='https://github.com/NebuPookins/JS-Mastermind-Solver/issues'>https://github.com/NebuPookins/JS-Mastermind-Solver/issues</a>. Otherwise, click 'Restart' to try a new game.");
+						$curGuessAlert.html("Ran out of possible guesses. There might be a contradiction in the information you entered above. If you think this is a bug, please file a report, Otherwise, click 'Restart' to try a new game.");
 						$curGuessAlert.show();
 					} else {
 						$playAreaCurGuess.html(newGuessTemplate({
@@ -323,7 +323,7 @@ crossorigin="anonymous"></script>
 					var allowDups = $allowDups.is(':checked');
 					if (!allowDups) {
 						if (parsedColors.length < numPegs) {
-							$inputAlert.text("If duplicates are not allowed, need at least as many colors as there are pegs.");
+							$inputAlert.text("If duplicates are not allowed, need at least as many Arrows as there are pegs.");
 							$inputAlert.show();
 							return
 						}
