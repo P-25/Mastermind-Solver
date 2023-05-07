@@ -4,28 +4,33 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-		<title>Mastermind Solver</title>
+		<title>Code Breaker Solver</title>
+		<style>
+			.hidden{
+				display: none;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="container">
 			<div>
 				<div class="form-row algin-items-center">
 					<div class="col-md-1">
-						<label for="colorLabels" class="col-form-label">Colors:</label>
+						<label for="colorLabels" class="col-form-label">Arrows:</label>
 					</div>
 					<div class="col-md-4">
-						<input type="text" class="form-control" id="colorLabels" value="Red, Green, Blue, Yellow, Orange, Cyan">
+						<input type="text" class="form-control" id="colorLabels" value="Left,Right,Up,Down" readonly>
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-2 hidden">
 						<label for="numPegs" class="col-form-label">Number of Pegs:</label>
 					</div>
-					<div class="col-md-1">
+					<div class="col-md-1 hidden">
 						<input type="number" class="form-control" id="numPegs" min="1" step="1" value="4">
 					</div>
-					<div class="col-md-2">
+					<div class="col-md-2 hidden">
 						<div class="form-check">
 							<input type="checkbox" class="form-check-input" id="allowDups" checked="checked">
-							<label for="allowDups" class="form-check-label">Allow duplicate colors</label>
+							<label for="allowDups" class="form-check-label">Allow duplicate Arrows</label>
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -40,7 +45,7 @@
 			<div id="play-area">
 				<table id="old-guesses-table" class="table table-striped table-hover" style="display: none">
 					<thead>
-						<tr><th>Guess</th><th>Right color and column</th><th>Right color, wrong column</th></tr>
+						<tr><th>Guess</th><th>Right Arrow and column</th><th>Right Arrow, wrong column</th></tr>
 					</thead>
 					<tbody id="old-guesses">
 					</tbody>
@@ -54,11 +59,11 @@
 					Congratulations! Click "Restart" to try again.
 				</div>
 				<script id="new-guess-template" type="text/x-handlebars-template">
-					<div class="guess">Is it maybe <b>{{guess}}</b>?</div>
+					<div class="guess">Choose <b>{{guess}}</b>?</div>
 					<div class="form-inline">
-						<label>Right color and Column: </label>
+						<label>Right Arrow and Column: </label>
 						<input type="number" min="0" step="1" max="{{numPegs}}" value="0" class="form-control bothCorrect">
-						<label>Right color, wrong Column: </label>
+						<label>Right Arrow, wrong Column: </label>
 						<input type="number" min="0" step="1" max="{{numPegs}}" value="0" class="form-control colorCorrect">
 						<button class="btn btn-primary">Next</button>
 					</div>
